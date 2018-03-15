@@ -11,6 +11,7 @@ var myMap = L.map("map", {
       center: [34.99, 0.47],
       zoom: 3,
       noWrap: true,
+      maxBounds: [[90,-180], [-90, 180]],
       layers: [satellitemap],       
 });
 
@@ -20,7 +21,7 @@ d3.json(firstLevelURL, function(data) {
   var getInterval = function(quake) {
           return {
             start: quake.properties.time,
-            end:   quake.properties.time + quake.properties.mag * 1800000
+            end:   quake.properties.time + quake.properties.mag * 3600000
           };
         };
         var timelineControl = L.timelineSliderControl({
